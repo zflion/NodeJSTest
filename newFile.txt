@@ -2,3 +2,4 @@ line1
 line2
 add new line from sourcetree clone
 LINE_FROM DEV BRANCH
+LINE_FROM DEV BRANCH again
