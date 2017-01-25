@@ -6,14 +6,27 @@
 			var lastMessage;
 			window.onload = function(){
 				var ws = new WebSocket('ws://localhost:8000');
+				var open = false;
 				ws.onopen = function(){
-					// ping server
-					ping();
+					
+					open = true;
 				}
 				ws.onmessage = function(ev){
 					console.log('got:' + ev.data);
 					document.getElementById('latency').innerHTML = new Date - lastMessage;
-					ping();
+					document.getElementById('messageEcho').innerHTML = ev.data;
+					//ping();
+				}
+				document.getElementById('message').onsubmit = function(){
+					if (open){
+						lastMessage = new Date;
+						var text = document.getElementById('text').value;
+						ws.send(text);
+						document.getElementById('text').value = '';
+						document.getElementById('text').focus();
+						document.getElementById('messageout').innerHTML = text;
+					}
+					return false
 				}
 				
 				var ping = function() {
@@ -26,7 +39,16 @@
 		</script>
 	</head>
 	<body>
-		<h1>WebSocket Echo</h1>
+		
+		<h1>WebSocket Echo Test</h1>
+		
+		<form id="message">
+			<input type="text" id='text'/>
+			<button>submit</button>
+		</form>
+		<h2>Send message: <span id='messageout'></span></h2>
+		<h2>Server echo message: <span id='messageEcho'></span></h2>
+
 		<h2>Latency: <span id='latency'></span> ms</h2>
 	</body>
 	

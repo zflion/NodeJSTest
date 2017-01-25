@@ -11,7 +11,7 @@ app.use(express.static('public'));
 ws.on('connection',function(socket){
 	socket.on('message',function(msg){
 		console.log(msg);
-		socket.send('pong');
+		socket.send("'"+msg+"'" + ' received by server!!');
 	});
 });
 
