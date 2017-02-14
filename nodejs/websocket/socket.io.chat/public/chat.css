@@ -1,2 +1,9 @@
-#chat {display:none}
-.announcement{color:red}
+#chat {
+	display:none;
+}
+.announcement{
+	color:red;
+}
+#mynickname{ 
+	font-size:40px;
+}
