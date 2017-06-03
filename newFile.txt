@@ -3,3 +3,5 @@ line2
 add new line from sourcetree clone
 LINE_FROM DEV BRANCH
 LINE_FROM DEV BRANCH again
+
+this is from task1'change_1
